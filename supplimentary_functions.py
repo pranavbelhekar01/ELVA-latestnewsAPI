@@ -32,7 +32,7 @@ def scrape_analytics_insight():
                 image_tag = article.find('img')
                 img_link = image_tag['src'] if image_tag else None
 
-                article_data.append({'Article Title': title, 'Link': link, 'Image': img_link})
+                article_data.append({'article_title': title, 'Link': link, 'Image': img_link})
     
         return article_data
 
@@ -64,7 +64,7 @@ def scrape_mit_news():
             description = article_element.find('p', class_='term-page--news-article--item--dek').span.text.strip()
             date = article_element.find('p', class_='term-page--news-article--item--publication-date').time['datetime']
 
-            article_data.append({'Article Title': title, 'Link': link, 'Image': img_link, 'Description': description})
+            article_data.append({'article_title': title, 'Link': link, 'Image': img_link, 'Description': description})
         
         return article_data
 
@@ -97,7 +97,7 @@ def scrape_wired_news():
             title = article_element.find('a', class_="SummaryItemHedLink-civMjp ejgyuy summary-item-tracking__hed-link summary-item__hed-link").h3.text
             link = "https://www.wired.co.uk" + article_element.find('a', class_="SummaryItemHedLink-civMjp ejgyuy summary-item-tracking__hed-link summary-item__hed-link")['href']
 
-            article_data.append({'Article Title': title, 'Link': link, 'Image': img_link})
+            article_data.append({'article_title': title, 'Link': link, 'Image': img_link})
         
         return article_data
 
@@ -138,7 +138,7 @@ def scrape_extremetech_news():
 
             link = "https://www.extremetech.com" + article_element.xpath('.//a[contains(@class, "w-full block hover:text-brand-orange text-base leading-tight font-medium sm:text-xl sm:leading-normal text-gray-700")]/@href')[0]
 
-            article_data.append({'Article Title': title, 'Link': link, 'Image': img_link, 'Description': description})
+            article_data.append({'article_title': title, 'Link': link, 'Image': img_link, 'Description': description})
         
         return article_data
 
@@ -173,7 +173,7 @@ def scrape_venturebeat_news():
             title = article_element.find('h2', class_="ArticleListing__title").a.text
             link = article_element.find('a', class_="ArticleListing__title-link")['href']
 
-            article_data.append({'Article Title': title, 'Link': link, 'Image': img_link})
+            article_data.append({'article_title': title, 'Link': link, 'Image': img_link})
         
         return article_data
 
@@ -218,7 +218,7 @@ def scrape_huggingface_papers():
             # data['Image'].append(image)
             # data['Title'].append(title)
             # data['Paper_Link'].append(link)
-            data.append({'Article Title': title, 'Link': link, 'Image': image})
+            data.append({'article_title': title, 'Link': link, 'Image': image})
 
         # Create a DataFrame from the collected data
         
@@ -229,12 +229,12 @@ def scrape_huggingface_papers():
         return None
 # # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 # def combine_data_simple(*data_list):
-#     combined_data = {'Article Title': [], 'Link': [], 'Image': []}
+#     combined_data = {'article_title': [], 'Link': [], 'Image': []}
 
 #     for data in data_list:
 #         if data:
 #             for entry in data:
-#                 combined_data['Article Title'].append(entry['Article Title'])
+#                 combined_data['article_title'].append(entry['article_title'])
 #                 combined_data['Link'].append(entry['Link'])
 #                 combined_data['Image'].append(entry['Image'])
 
