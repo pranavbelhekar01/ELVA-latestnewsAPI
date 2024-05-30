@@ -28,7 +28,7 @@ def read_latestnews():
     data_huggingface = scrape_huggingface_papers()
 
     response_data = {
-        "data_with_description": data_mitnews + data_extremetech,
+        # "data_with_description": data_mitnews + data_extremetech,
         "data_without_description": data_wired,
         "hugging_face_paper": data_huggingface
     }
